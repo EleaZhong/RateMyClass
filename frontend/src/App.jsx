@@ -2,9 +2,10 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
+import { grey, lightBlue, lightGreen } from '@mui/material/colors';
 
 // import components
-import Home from './components/Home'
+import SearchClass from './components/SearchClass'
 
 // main app component
 export default function App() {
@@ -24,7 +25,7 @@ export default function App() {
                     <Routes>
 
                         {/* Routes */}
-                        <Route path='/' element={<Home />} />
+                        <Route path='/' element={<SearchClass />} />
 
                     </Routes>
                 </BrowserRouter>
@@ -38,16 +39,10 @@ export default function App() {
 const theme = createTheme({
     palette: {
         primary: {
-            // insert primary colors to use
-            // (need to change colors, these are just for example)
-            light: '#f9e3f4',
-            main: '#ee02ab',
-            dark: '#860078',
+            main: lightGreen[400],
         },
         secondary: {
-            light: '#defabb',
-            main: '#02ee45',
-            dark: '#008d0c',
-        }
-    },
+            main: lightBlue[400],
+        },
+      },
 })
