@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API = axios.create({baseURL: 'http://localhost'}) // needs url still
+const API = axios.create({baseURL: 'https://6477fcc4-6b5f-4b33-bb4d-9b97b4334d2f.mock.pstmn.io'}) // needs url still
 
 // axios interceptor
 // adds authToken as header to request for user authentication
@@ -28,7 +28,7 @@ const getAll = async () => {
 const getOne = async (classID) => {
     try {
         const res = await API.get(
-            '/api/class/' + classCode,
+            '/api/class/' + classID,
         )
         return res
     } catch (error) {

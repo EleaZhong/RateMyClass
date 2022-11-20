@@ -10,27 +10,19 @@ import {
     TextField,
     Autocomplete,
     InputAdornment,
+    Avatar,
 } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search';
 import {getAll, getOne} from "../services/classService";
+
 import { createFilterOptions } from '@mui/material/Autocomplete';
-import ClassAppbar from "./ClassAppbar"
 const filter = createFilterOptions();
 
-// const tempClasses = [
-//     {name: "CSCI102: Fundamentals of Computation "},
-//     {name: "CSCI103: Introduction to Programming"},
-//     {name: "CSCI104: Data Structures and Object Oriented Design "},
-//     {name: "CSCI170: Discrete Methods in Computer Science "},
-//     {name: "CSCI201: Principles of Software Development "},
-//     {name: "CSCI270: Introduction to Algorithms and Theory of Computing "},
-//     {name: "CSCI310: Software Engineering "},
-// ]
 
-
-export default function SearchClass() {
+export default function ClassAppbar(props) {
     const [value, setValue] = useState(null);
     const [classes, setClasses] = useState([]);
+    const [logintoken, setLogintoken] = useState(true);
 
     useEffect(() => {
         getAll().then((res) => {
@@ -40,20 +32,20 @@ export default function SearchClass() {
             });
             setClasses(concatenated);
         });
+        const token = localStorage.getItem('authToken')
+        if (token) {
+            setLogintoken(token)
+        }
       }, []);
 
     return (
-    <Box sx={{ display: 'flex' }}>
-        {/* top bar */}
-        <ClassAppbar search={true} color={false} />
-        {/* Centered Search Bar */}
-        <Grid container justifyContent="center" alignItems="center" sx={{ height: '100vh' }}> 
-            <Grid item>
-                <Typography variant="h1" component="h1" sx={{ fontWeight: 700, fontSize: '5rem' }}>
-                    ClassMate.
-                </Typography>
-                {/* Can search here and can choose to add new class, where you're redirected to a new page */}
-                <Autocomplete
+
+
+    <AppBar component="nav" color={props.color?"primary":"transparent"} sx={{ boxShadow: 0 }}>
+        <Toolbar>
+            
+            <Grid container justifyContent="flex-end" alignItems="center">
+                {props.search?<Autocomplete
                     freeSolo
                     options={classes}
                     onChange={(event, newValue) => {
@@ -99,21 +91,30 @@ export default function SearchClass() {
                         <TextField {...params} 
                             label="Search Classes" 
                             variant="outlined" 
-                            size="large" 
-                            sx={{ width: '50rem' }}
+                            size="small" 
+                            sx={{ width: '25rem' }}
                             InputProps={{
                                 ...params.InputProps,
                                 startAdornment: (
-                                  <InputAdornment position="start">
+                                <InputAdornment position="start">
                                     <SearchIcon />
-                                  </InputAdornment>
+                                </InputAdornment>
                                 ),
-                              }}
+                            }}
                         />
                     )}
-                />
+                    
+                />:null}
+                {logintoken?<>
+                    <Typography variant="h6" size="large" sx={{fontWeight:200, marginLeft: 2}} > Logged in as Student </Typography>
+                    <Button variant="contained" color="primary" sx={{ ml: 2 }}>Sign Out</Button></>
+                :<>
+                    <Button variant="text" size="large">Sign Up</Button>
+                    <Button variant="contained"   size="large">Log In</Button>
+                </>}
             </Grid>
-        </Grid>
-    </Box>
+        </Toolbar>
+    </AppBar>
+
     )
 }
