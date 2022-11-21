@@ -22,7 +22,7 @@ const filter = createFilterOptions();
 export default function ClassAppbar(props) {
     const [value, setValue] = useState(null);
     const [classes, setClasses] = useState([]);
-    const [logintoken, setLogintoken] = useState(true);
+    const [logintoken, setLogintoken] = useState(null);
 
     useEffect(() => {
         getAll().then((res) => {
@@ -39,7 +39,7 @@ export default function ClassAppbar(props) {
       }, []);
 
     return (
-
+    // position="sticky"
 
     <AppBar component="nav" color={props.color?"primary":"transparent"} sx={{ boxShadow: 0 }}>
         <Toolbar>

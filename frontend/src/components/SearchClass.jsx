@@ -45,7 +45,7 @@ export default function SearchClass() {
     return (
     <Box sx={{ display: 'flex' }}>
         {/* top bar */}
-        <ClassAppbar search={true} color={false} />
+        <ClassAppbar search={false} color={false} />
         {/* Centered Search Bar */}
         <Grid container justifyContent="center" alignItems="center" sx={{ height: '100vh' }}> 
             <Grid item>

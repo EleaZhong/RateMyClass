@@ -2,10 +2,11 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
-import { grey, lightBlue, lightGreen } from '@mui/material/colors';
+import { grey, lightBlue, lightGreen, red } from '@mui/material/colors';
 
 // import components
 import SearchClass from './components/SearchClass'
+import DisplayClass from './components/DisplayClass'
 
 // main app component
 export default function App() {
@@ -26,6 +27,7 @@ export default function App() {
 
                         {/* Routes */}
                         <Route path='/' element={<SearchClass />} />
+                        <Route path='/class/:id' element={<DisplayClass />} />
 
                     </Routes>
                 </BrowserRouter>
@@ -43,6 +45,10 @@ const theme = createTheme({
         },
         secondary: {
             main: lightBlue[400],
+        },
+        action: {
+            main: red[400],
+            disabled: grey[400],
         },
       },
 })

@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API = axios.create({baseURL: 'https://6477fcc4-6b5f-4b33-bb4d-9b97b4334d2f.mock.pstmn.io'}) // needs url still
+const API = axios.create({baseURL: 'https://637ad285702b9830b9f3a796.mockapi.io'}) // needs url still
 
 // axios interceptor
 // adds authToken as header to request for user authentication
