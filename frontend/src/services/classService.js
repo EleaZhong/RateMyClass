@@ -24,6 +24,24 @@ const getAll = async () => {
     }
 }
 
+// searches classes
+const searchClass = async (name) => {
+    try {
+        const res = await API.get(
+            '/api/class',
+            {
+                params: {
+                    search: name
+                }
+            }
+        )
+        return res
+    } catch (error) {
+        console.log(error)
+        return error
+    }
+}
+
 // gets one class given String classID
 const getOne = async (classID) => {
     try {
@@ -56,5 +74,6 @@ const insert = async (classID, name) => {
 export {
     getAll,
     getOne,
-    insert
+    insert,
+    searchClass
 }

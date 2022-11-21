@@ -7,6 +7,7 @@ import { grey, lightBlue, lightGreen, red } from '@mui/material/colors';
 // import components
 import SearchClass from './components/SearchClass'
 import DisplayClass from './components/DisplayClass'
+import ListClass from './components/ListClass'
 
 // main app component
 export default function App() {
@@ -28,6 +29,7 @@ export default function App() {
                         {/* Routes */}
                         <Route path='/' element={<SearchClass />} />
                         <Route path='/class/:id' element={<DisplayClass />} />
+                        <Route path='/class' element={<ListClass />} />
 
                     </Routes>
                 </BrowserRouter>
@@ -50,5 +52,8 @@ const theme = createTheme({
             main: red[400],
             disabled: grey[400],
         },
+        white: {
+            main: grey[0],
+        }
       },
 })

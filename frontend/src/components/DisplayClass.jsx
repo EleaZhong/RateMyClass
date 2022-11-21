@@ -45,9 +45,9 @@ export default function DisplayClass(props) {
     return (
         <Box>
             {/* top bar */}
-            <ClassAppbar search={true} color={false} />
+            <ClassAppbar search={true} color={true} />
             
-            <Box sx={{ display: 'flex', marginTop:8, marginLeft: 12, marginRight: 12}}>
+            <Box sx={{ display: 'flex', marginTop:9, marginLeft: 12, marginRight: 12}}>
                 <Grid container>    
                     <Grid item container spacing={2} flexGrow={1} xs={12} marginBottom={4}>
                         <Grid item >
