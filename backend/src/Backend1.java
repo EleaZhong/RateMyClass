@@ -29,7 +29,7 @@ public class Backend1 {
 
         for (String v : um.map.keySet())
         {
-            if (um.map.get(v) == u)
+            if (um.map.get(v).equals(u))
             {
                 return v;
             }
