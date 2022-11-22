@@ -1,6 +1,6 @@
 public class Backend1 {
     
-    boolean userExists(User u) {
+    static boolean userExists(User u) {
         UserMap um = Server.getAllUsers();
         for (User v : um.map.values())
         {
@@ -13,7 +13,7 @@ public class Backend1 {
         return false;
     }
     
-    boolean register(String email, String password) {
+    static boolean register(String email, String password) {
         User u = new User(email, password);
         if (!userExists(u))
         {
@@ -23,7 +23,7 @@ public class Backend1 {
         return false;
     }
     
-    String login(String email, String password) {
+    static String login(String email, String password) {
         User u = new User(email, password);
         UserMap um = Server.getAllUsers();
 
@@ -39,4 +39,3 @@ public class Backend1 {
     }
     
 }
-
