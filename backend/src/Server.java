@@ -8,16 +8,6 @@ import com.google.gson.Gson;
 
 public class Server {
 	
-	public static void main(String[] args) {
-		// Course c = new Course("CSCI 270", "Algorithms", "Greedy things lol");
-		// c.addRating(new Rating(5, "", "Kempe", "Fall 2022", "AMAZING!"));
-		// putCourse("-NHRUlzjbCY-o7vaXx4y", c);
-		// CourseMap courses = getAllCourses();
-        // for(String key : courses.map.keySet()) {
-        //     System.out.println(courses.map.get(key));
-        // }
-	}
-
 	public static void putCourse(String courseIdentifier, Course course) {
 		URL url;
 		try {
@@ -112,6 +102,12 @@ public class Server {
 			writer.flush();
 			writer.close();
 			httpConn.getOutputStream().close();
+			InputStream responseStream = httpConn.getResponseCode() / 100 == 2
+					? httpConn.getInputStream()
+					: httpConn.getErrorStream();
+			// Scanner s = new Scanner(responseStream).useDelimiter("\\A");
+			// String response = s.hasNext() ? s.next() : "";
+			// System.out.println(response);
 
 		} catch (Exception e) {
 			e.printStackTrace();
