@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API = axios.create({baseURL: 'http://localhost'}) // needs url still
+const API = axios.create({baseURL: 'https://637ad285702b9830b9f3a796.mockapi.io'}) // needs url still
 
 // axios interceptor
 // adds authToken as header to request for user authentication
@@ -24,11 +24,29 @@ const getAll = async () => {
     }
 }
 
+// searches classes
+const searchClass = async (name) => {
+    try {
+        const res = await API.get(
+            '/api/class',
+            {
+                params: {
+                    search: name
+                }
+            }
+        )
+        return res
+    } catch (error) {
+        console.log(error)
+        return error
+    }
+}
+
 // gets one class given String classID
 const getOne = async (classID) => {
     try {
         const res = await API.get(
-            '/api/class/' + classCode,
+            '/api/class/' + classID,
         )
         return res
     } catch (error) {
@@ -56,5 +74,6 @@ const insert = async (classID, name) => {
 export {
     getAll,
     getOne,
-    insert
+    insert,
+    searchClass
 }
