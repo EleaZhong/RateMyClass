@@ -8,6 +8,9 @@ import { grey, lightBlue, lightGreen, red } from '@mui/material/colors';
 import SearchClass from './components/SearchClass'
 import DisplayClass from './components/DisplayClass'
 import ListClass from './components/ListClass'
+import NewClass from './components/NewClass'
+import LogIn from './components/LogIn'
+import SignUp from './components/SignUp'
 
 // main app component
 export default function App() {
@@ -30,6 +33,9 @@ export default function App() {
                         <Route path='/' element={<SearchClass />} />
                         <Route path='/class/:id' element={<DisplayClass />} />
                         <Route path='/class' element={<ListClass />} />
+                        <Route path='/newClass' element={<NewClass />} />
+                        <Route path='/logIn' element={<LogIn />} />
+                        <Route path='/signUp' element={<SignUp />} />
 
                     </Routes>
                 </BrowserRouter>

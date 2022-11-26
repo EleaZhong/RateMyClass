@@ -4,12 +4,12 @@ const API = axios.create({baseURL: 'https://637ad285702b9830b9f3a796.mockapi.io'
 
 // axios interceptor
 // adds authToken as header to request for user authentication
-API.interceptors.request.use((config) => {
+/*API.interceptors.request.use((config) => {
     const token = localStorage.getItem('authToken')
     if (token)
         config.headers.common['X-Auth-Token'] = token
     return config
-})
+})*/
 
 // gets all classes
 const getAll = async () => {

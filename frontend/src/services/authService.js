@@ -4,12 +4,12 @@ const API = axios.create({baseURL: 'http://localhost'}) // needs url still
 
 // axios interceptor
 // adds authToken as header to request for user authentication
-API.interceptors.request.use((config) => {
+/*API.interceptors.request.use((config) => {
     const token = localStorage.getItem('authToken')
     if (token)
         config.headers.common['X-Auth-Token'] = token
     return config
-})
+})*/
 
 // handle user log in
 const logIn = async ({email, password}) => {
@@ -28,7 +28,7 @@ const logIn = async ({email, password}) => {
 }
 
 // handle user register
-const register = async ({email, password}) => {
+const signUp = async ({email, password}) => {
     try {
         const res = await API.post(
             '/api/auth/signUp', {
@@ -45,5 +45,5 @@ const register = async ({email, password}) => {
 
 export {
     logIn,
-    register
+    signUp
 }

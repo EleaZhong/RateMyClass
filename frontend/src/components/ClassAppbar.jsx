@@ -22,14 +22,16 @@ const filter = createFilterOptions();
 
 
 export default function ClassAppbar(props) {
-    const [logintoken, setLogintoken] = useState(null);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
+        // check if user logged in
         const token = localStorage.getItem('authToken')
         if (token) {
-            setLogintoken(token)
+            setIsLoggedIn(true)
         }
+            
       }, []);
 
     return (
@@ -43,12 +45,12 @@ export default function ClassAppbar(props) {
             <Grid container justifyContent="flex-end" alignItems="center">
                 
                 {props.search?<SearchAutocomplete displaysize="small" input={props.input}/>:null}
-                {logintoken?<>
+                {!isLoggedIn?<>
                     <Typography variant="h6" size="large" sx={{fontWeight:200, marginLeft: 2}} > Logged in as Student </Typography>
                     <Button variant="contained" color="primary" sx={{ ml: 2 }}>Sign Out</Button></>
                 :<>
-                    <Button variant="text" size="large">Sign Up</Button>
-                    <Button variant="contained"   size="large">Log In</Button>
+                    <Button variant="text" size="large" component={Link} to='/signUp'>Sign Up</Button>
+                    <Button variant="contained" size="large" component={Link} to='logIn'>Log In</Button>
                 </>}
             </Grid>
         </Toolbar>
