@@ -1,5 +1,5 @@
 import React from 'react';
-import { useRef } from 'react';
+import { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './WelcomePage.css';
 import reportWebVitals from './reportWebVitals';
@@ -11,13 +11,12 @@ import FeatureCard from './FeatureCard';
 import TextField from '@mui/material/TextField';
 import { red } from '@mui/material/colors';
 import { render } from '@testing-library/react';
+import ClassAppbar from './ClassAppbar';
+import { insert } from '../services/commentService';
 
 export default class RateClass extends React.Component{
     constructor(props){
         super(props);
-        this.classc = React.createRef();
-        this.professor = React.createRef();
-
         this.marks = [
             {
                 value: 0,
@@ -34,84 +33,105 @@ export default class RateClass extends React.Component{
     
             
         ]
+        this.state={
+            class_select:null,
+            rating:0,
+            professor:'',
+            date:null,
+            comment:""
+        }
+        this.handleChange = this.handleChange.bind(this);
     }
 
-    componentDidMount(){
-        console.log(this.classc);
-        this.classc.current.focus();
+    handleChange(event){
+        const target=event.target;
+        const value=target.value;
+        const name=target.name;
+
+        this.setState({
+            [name]: value
+        });
     }
 
-    
-
-    
-
-    render() {
-        
-
+    render(){
         return(
             <React.StrictMode>
+                <ClassAppbar/>
                 <main>
                     <Container justify='center' maxWidth="lg" className="main">
                         <Typography variant='h2'>Add a rating for the class</Typography>
                         <form>
                             <Grid container spacing={4} justify="center">
-                                <Grid container item xs={12}>
+
+                                {/* <Grid container item xs={12}>
                                     <Grid item xs={6} md={6}>
+                                        <InputLabel id="class-select-label">Select a class: (required)</InputLabel>
                                         <FormControl id="select-control">
-                                            <InputLabel id="class-select-label">Select a class:</InputLabel>
-                                            <Select labelId='class-select-label' required autoWidth  defaultValue={-1} id="class-select" ref={this.classc}>
+                                            
+                                            <Select labelId='class-select-label' required autoWidth name="class_select" defaultValue={-1} id="class-select" value={this.state.class_select} onChange={this.handleChange}>
                                                 <MenuItem value={-1}>--Select a Class From the Following--</MenuItem>
                                                 <MenuItem value={1}>CSCI 201: Priciples of Software development</MenuItem>
-                                                {/* TODO populate class select with all classes*/}
+                                                
+
                                             </Select>
                                             <FormHelperText id='select-helper' error></FormHelperText>
-                                        </FormControl>
-                                        
+                                        </FormControl>                                        
                                     </Grid>
-                                    
-                                </Grid>
+                                </Grid> */}
+
                                 <Grid item xs={12} md={12}>
                                     <InputLabel xs={6} md={6} id="rating-slide-label">Please select a rating between -5 and 5</InputLabel>
-                                    <Slider required labelId = "rating-slide-label" defaultValue={0} min={-5} max={5} step={1} marks={this.marks} valueLabelDisplay="auto"/>
+                                    <Slider required labelId = "rating-slide-label" name="rating" defaultValue={0} min={-5} max={5} step={1} marks={this.marks} valueLabelDisplay="auto" onChange={this.handleChange}/>
                                 </Grid>
+
                                 <Grid item xs={12} md={6}>
-                                    <FormControl id="select-control">
-                                        <InputLabel id="date-pick-label">Select the date you took the class:</InputLabel>
-                                        <input type="month" required id='month-select'/>
+                                    <InputLabel id="date-pick-label">Select the date you took the class: (required)</InputLabel>
+                                    <FormControl id="date-control">
+                                        
+                                        <input type="month" required id='month-select' name="date" onChange={this.handleChange}/>
                                         <FormHelperText id="month-helper" error></FormHelperText>
                                     </FormControl>
                                 </Grid>
+
                                 <Grid item xs={12} md={6}>
                                     <InputLabel id="professor-label">Which Professor did you take it with: </InputLabel>
-                                    <TextField labelId = "professor-label" ref={this.professor}/>
+                                    <TextField labelId = "professor-label" name="professor" value={this.state.professor} onChange={this.handleChange}/>
                                 </Grid>
+
                                 <Grid container item xs={12} md={12}>
                                     <Grid item xs={12} md={12}>
+                                    <InputLabel id="comment-label" >Comment For the class: </InputLabel>
                                         <FormControl fullWidth>
-                                            <InputLabel id="comment-label" >Comment For the class: </InputLabel>
-                                            <TextField labelId="comment-label" multiline rows={2}/>
+                                            
+                                            <TextField labelId="comment-label" multiline rows={2} name="comment" onChange={this.handleChange}/>
                                         </FormControl>
                                         
                                     </Grid>
                                 </Grid>
+
                                 <Grid item xs={12} md={12}>
                                     <Button variant ="contained" 
                                         onClick={ 
+                                            
                                             () => {
-                                                console.log(this.classc.current.value);
-                                                console.log(this.professor.current.value);
-                                                if(this.classc.current.value == null || this.classc.current.value == -1){
+                                                console.log(this.state.class_select);
+                                                console.log(this.state.rating);
+                                                console.log(this.state.date);
+                                                console.log(this.state.professor);
+                                                console.log(this.state.comment);
+                                                if(this.state.class_select == null){
                                                     alert("missing required fileds");
                                                     document.querySelector("#select-helper").innerHTML = "Please fill this out";
                                                     
                                                 }
-                                                else if(document.querySelector("#month-select").value == null){
+                                                else if(this.state.month == null){
                                                     alert("missing required fileds");
                                                     document.querySelector("#month-helper").innerHTML = "Please fill this out";
                                                 }
                                                 else{
                                                     alert("Successfully submitted");
                                                     // TODO: actually submit the form
+                                                    insert(this.state.professor, this.state.date, this.state.comment, this.state.class_select)
                                                 }
                                             }
                                         }>Submit
