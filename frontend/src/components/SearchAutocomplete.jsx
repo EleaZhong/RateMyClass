@@ -49,7 +49,8 @@ export default function SearchAutocomplete(props) {
         options={classes}
         onChange={(event, newValue) => {
             if (((typeof newValue === 'string') || (newValue && newValue.inputValue)) && (newValue.name !== undefined) && (newValue.name.startsWith("Add"))) {
-                alert("redirect to create") // we should redirect to a new page here
+                // redirect to newClass page
+                navigate('/newClass', {state:{classID:newValue.inputValue.toUpperCase()}})
             } else {
                 if (newValue != null && newValue != "") {
                     console.log(newValue.name)
