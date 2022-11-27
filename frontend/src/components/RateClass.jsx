@@ -12,6 +12,8 @@ import { red } from '@mui/material/colors';
 import { render } from '@testing-library/react';
 import ClassAppbar from './ClassAppbar';
 import { insert } from '../services/commentService';
+////import { withRouter } from "react-router"; 
+
 
 export default class RateClass extends React.Component{
     constructor(props){
@@ -32,15 +34,17 @@ export default class RateClass extends React.Component{
     
             
         ]
+        alert(this.props.location);
         this.state={
             //class_select:null,
             rating:0,
             professor:'',
             date:null,
             comment:"",
-            classID:this.props.location.state.classID
+            //classID:this.props.location.state.classID
         }
         this.handleChange = this.handleChange.bind(this);
+        
     }
 
     handleChange(event){
@@ -148,3 +152,5 @@ export default class RateClass extends React.Component{
         );
     }
 }
+
+//export default withRouter(RateClass);
