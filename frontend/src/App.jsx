@@ -11,6 +11,7 @@ import ListClass from './components/ListClass'
 import NewClass from './components/NewClass'
 import LogIn from './components/LogIn'
 import SignUp from './components/SignUp'
+import RateClass from './components/RateClass';
 
 // main app component
 export default function App() {
@@ -36,6 +37,7 @@ export default function App() {
                         <Route path='/newClass' element={<NewClass />} />
                         <Route path='/logIn' element={<LogIn />} />
                         <Route path='/signUp' element={<SignUp />} />
+                        <Route path='/rateClass' element={<RateClass />} />
 
                     </Routes>
                 </BrowserRouter>
