@@ -2,7 +2,6 @@ import React from 'react';
 import { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './WelcomePage.css';
-import reportWebVitals from './reportWebVitals';
 import Button from '@mui/material/Button';
 import { Container} from '@mui/system';
 import Grid2 from '@mui/material/Unstable_Grid2/Grid2';
