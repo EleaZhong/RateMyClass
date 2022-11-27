@@ -12,13 +12,13 @@ import { red } from '@mui/material/colors';
 import { render } from '@testing-library/react';
 import ClassAppbar from './ClassAppbar';
 import { insert } from '../services/commentService';
-////import { withRouter } from "react-router"; 
+import {useLocation} from "react-router-dom";
 
 
-export default class RateClass extends React.Component{
-    constructor(props){
-        super(props);
-        this.marks = [
+
+export default function RateClass(props){
+    
+        const marks = [
             {
                 value: 0,
                 label: 0,
@@ -31,33 +31,22 @@ export default class RateClass extends React.Component{
                 value: 5,
                 label: 5,
             },
-    
-            
         ]
-        alert(this.props.location);
-        this.state={
-            //class_select:null,
-            rating:0,
-            professor:'',
-            date:null,
-            comment:"",
-            //classID:this.props.location.state.classID
-        }
-        this.handleChange = this.handleChange.bind(this);
+
+        const location = useLocation();
+
+        const [classRating, setClassRating] = useState({rating:0, professor:"", date:"", comment:""});
+        alert(location.state.classID);
         
+        
+        
+    
+
+    const handleChange = (event) => {
+        setClassRating({...classRating, [event.target.name]: event.target.value})
     }
 
-    handleChange(event){
-        const target=event.target;
-        const value=target.value;
-        const name=target.name;
-
-        this.setState({
-            [name]: value
-        });
-    }
-
-    render(){
+    
         return(
             <React.StrictMode>
                 <ClassAppbar/>
@@ -85,21 +74,21 @@ export default class RateClass extends React.Component{
 
                                 <Grid item xs={12} md={12}>
                                     <InputLabel xs={6} md={6} id="rating-slide-label">Please select a rating between -5 and 5</InputLabel>
-                                    <Slider required labelId = "rating-slide-label" name="rating" defaultValue={0} min={-5} max={5} step={1} marks={this.marks} valueLabelDisplay="auto" onChange={this.handleChange}/>
+                                    <Slider required labelId = "rating-slide-label" name="rating" defaultValue={0} min={-5} max={5} step={1} marks={marks} valueLabelDisplay="auto" value={classRating.rating} onChange={handleChange}/>
                                 </Grid>
 
                                 <Grid item xs={12} md={6}>
                                     <InputLabel id="date-pick-label">Select the date you took the class: (required)</InputLabel>
                                     <FormControl id="date-control">
                                         
-                                        <input type="month" required id='month-select' name="date" onChange={this.handleChange}/>
+                                        <input type="month" required id='month-select' name="date" onChange={handleChange} value={classRating.date}/>
                                         <FormHelperText id="month-helper" error></FormHelperText>
                                     </FormControl>
                                 </Grid>
 
                                 <Grid item xs={12} md={6}>
                                     <InputLabel id="professor-label">Which Professor did you take it with: </InputLabel>
-                                    <TextField labelId = "professor-label" name="professor" value={this.state.professor} onChange={this.handleChange}/>
+                                    <TextField labelId = "professor-label" name="professor" value={classRating.professor} onChange={handleChange}/>
                                 </Grid>
 
                                 <Grid container item xs={12} md={12}>
@@ -107,7 +96,7 @@ export default class RateClass extends React.Component{
                                     <InputLabel id="comment-label" >Comment For the class: </InputLabel>
                                         <FormControl fullWidth>
                                             
-                                            <TextField labelId="comment-label" multiline rows={2} name="comment" onChange={this.handleChange}/>
+                                            <TextField labelId="comment-label" multiline rows={2} name="comment" onChange={handleChange} value={classRating.comment}/>
                                         </FormControl>
                                         
                                     </Grid>
@@ -119,23 +108,18 @@ export default class RateClass extends React.Component{
                                             
                                             () => {
                                                 //console.log(this.state.class_select);
-                                                console.log(this.state.rating);
-                                                console.log(this.state.date);
-                                                console.log(this.state.professor);
-                                                console.log(this.state.comment);
-                                                if(this.state.class_select == null){
-                                                    alert("missing required fileds");
-                                                    document.querySelector("#select-helper").innerHTML = "Please fill this out";
-                                                    
-                                                }
-                                                else if(this.state.month == null){
+                                                // console.log(this.state.rating);
+                                                // console.log(this.state.date);
+                                                // console.log(this.state.professor);
+                                                
+                                                if(classRating.date == null){
                                                     alert("missing required fileds");
                                                     document.querySelector("#month-helper").innerHTML = "Please fill this out";
                                                 }
                                                 else{
                                                     alert("Successfully submitted");
                                                     // TODO: actually submit the form
-                                                    insert(this.state.professor, this.state.date, this.state.comment, this.state.classID)
+                                                    insert(classRating.professor, classRating.date, classRating.comment, classRating.rating, location.state.classID);
                                                 }
                                             }
                                         }>Submit
@@ -150,7 +134,6 @@ export default class RateClass extends React.Component{
             </React.StrictMode>
             
         );
-    }
+    
 }
 
-//export default withRouter(RateClass);
