@@ -34,11 +34,12 @@ export default class RateClass extends React.Component{
             
         ]
         this.state={
-            class_select:null,
+            //class_select:null,
             rating:0,
             professor:'',
             date:null,
-            comment:""
+            comment:"",
+            classID:this.props.location.state.classID
         }
         this.handleChange = this.handleChange.bind(this);
     }
@@ -114,7 +115,7 @@ export default class RateClass extends React.Component{
                                         onClick={ 
                                             
                                             () => {
-                                                console.log(this.state.class_select);
+                                                //console.log(this.state.class_select);
                                                 console.log(this.state.rating);
                                                 console.log(this.state.date);
                                                 console.log(this.state.professor);
@@ -131,7 +132,7 @@ export default class RateClass extends React.Component{
                                                 else{
                                                     alert("Successfully submitted");
                                                     // TODO: actually submit the form
-                                                    insert(this.state.professor, this.state.date, this.state.comment, this.state.class_select)
+                                                    insert(this.state.professor, this.state.date, this.state.comment, this.state.classID)
                                                 }
                                             }
                                         }>Submit
