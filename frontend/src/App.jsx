@@ -2,9 +2,16 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
+import { grey, lightBlue, lightGreen, red } from '@mui/material/colors';
 
 // import components
-import Home from './components/Home'
+import SearchClass from './components/SearchClass'
+import DisplayClass from './components/DisplayClass'
+import ListClass from './components/ListClass'
+import NewClass from './components/NewClass'
+import LogIn from './components/LogIn'
+import SignUp from './components/SignUp'
+import RateClass from './components/RateClass';
 
 // main app component
 export default function App() {
@@ -24,7 +31,13 @@ export default function App() {
                     <Routes>
 
                         {/* Routes */}
-                        <Route path='/' element={<Home />} />
+                        <Route path='/' element={<SearchClass />} />
+                        <Route path='/class/:id' element={<DisplayClass />} />
+                        <Route path='/class' element={<ListClass />} />
+                        <Route path='/newClass' element={<NewClass />} />
+                        <Route path='/logIn' element={<LogIn />} />
+                        <Route path='/signUp' element={<SignUp />} />
+                        <Route path='/rateClass' element={<RateClass />} />
 
                     </Routes>
                 </BrowserRouter>
@@ -38,16 +51,17 @@ export default function App() {
 const theme = createTheme({
     palette: {
         primary: {
-            // insert primary colors to use
-            // (need to change colors, these are just for example)
-            light: '#f9e3f4',
-            main: '#ee02ab',
-            dark: '#860078',
+            main: lightGreen[400],
         },
         secondary: {
-            light: '#defabb',
-            main: '#02ee45',
-            dark: '#008d0c',
+            main: lightBlue[400],
+        },
+        action: {
+            main: red[400],
+            disabled: grey[400],
+        },
+        white: {
+            main: grey[0],
         }
-    },
+      },
 })
