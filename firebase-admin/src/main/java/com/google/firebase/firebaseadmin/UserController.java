@@ -12,11 +12,13 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/api/auth/logIn")
     public ResponseEntity<String> logIn(@RequestParam String email, String password) throws InterruptedException, ExecutionException{
         return userService.logIn(email, password);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/api/auth/signUp")
     public ResponseEntity<String> signUp(@RequestParam String email, String password) throws InterruptedException, ExecutionException{
         return userService.signUp(email, password);

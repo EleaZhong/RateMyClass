@@ -9,7 +9,6 @@ import { AppBar,Typography, Toolbar,Grid,CssBaseline, Card, InputLabel, FormCont
 import FeatureCard from './FeatureCard';
 import TextField from '@mui/material/TextField';
 import { red } from '@mui/material/colors';
-import { render } from '@testing-library/react';
 import ClassAppbar from './ClassAppbar';
 import { insert } from '../services/commentService';
 import {useLocation} from "react-router-dom";
