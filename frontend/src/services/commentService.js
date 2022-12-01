@@ -30,7 +30,7 @@ const get = async (classID) => {
 }
 
 // inserts new comment
-const insert = async (professor, semester, text, rating, classID) => {
+const insert = async (professor, text, rating, classID) => {
     try {
         const res = await API.post(
             '/api/comment/insert', {
