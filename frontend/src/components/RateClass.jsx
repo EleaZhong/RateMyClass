@@ -35,7 +35,7 @@ export default function RateClass(props){
 
         const location = useLocation();
 
-        const [classRating, setClassRating] = useState({rating:0, professor:"", date:"", comment:""});
+        const [classRating, setClassRating] = useState({rating:0, professor:"", comment:""});
         alert(location.state.classID);
         
         
@@ -77,14 +77,14 @@ export default function RateClass(props){
                                     <Slider required labelId = "rating-slide-label" name="rating" defaultValue={0} min={-5} max={5} step={1} marks={marks} valueLabelDisplay="auto" value={classRating.rating} onChange={handleChange}/>
                                 </Grid>
 
-                                <Grid item xs={12} md={6}>
+                                {/* <Grid item xs={12} md={6}>
                                     <InputLabel id="date-pick-label">Select the date you took the class: (required)</InputLabel>
                                     <FormControl id="date-control">
                                         
                                         <input type="month" required id='month-select' name="date" onChange={handleChange} value={classRating.date}/>
                                         <FormHelperText id="month-helper" error></FormHelperText>
                                     </FormControl>
-                                </Grid>
+                                </Grid> */}
 
                                 <Grid item xs={12} md={6}>
                                     <InputLabel id="professor-label">Which Professor did you take it with: </InputLabel>
@@ -112,15 +112,15 @@ export default function RateClass(props){
                                                 // console.log(this.state.date);
                                                 // console.log(this.state.professor);
                                                 
-                                                if(classRating.date == null){
-                                                    alert("missing required fileds");
-                                                    document.querySelector("#month-helper").innerHTML = "Please fill this out";
-                                                }
-                                                else{
-                                                    alert("Successfully submitted");
-                                                    // TODO: actually submit the form
-                                                    insert(classRating.professor, classRating.date, classRating.comment, classRating.rating, location.state.classID);
-                                                }
+                                                // if(classRating.date == null){
+                                                //     alert("missing required fileds");
+                                                //     document.querySelector("#month-helper").innerHTML = "Please fill this out";
+                                                // }
+                                                
+                                                alert("Successfully submitted");
+                                                // TODO: actually submit the form
+                                                insert(classRating.professor, classRating.comment, classRating.rating, location.state.classID);
+                                                
                                             }
                                         }>Submit
                                     </Button>
