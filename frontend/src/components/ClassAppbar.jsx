@@ -27,12 +27,22 @@ export default function ClassAppbar(props) {
 
     useEffect(() => {
         // check if user logged in
-        const token = localStorage.getItem('authToken')
+        /*const token = localStorage.getItem('authToken')
         if (token) {
+            setIsLoggedIn(true)
+        }*/
+
+        const userID = localStorage.getItem('userID')
+        if (userID) {
             setIsLoggedIn(true)
         }
             
       }, []);
+
+    const logOut = () => {
+        localStorage.removeItem('userID')
+        setIsLoggedIn(false)
+    }
 
     return (
     // position="sticky"
@@ -45,9 +55,9 @@ export default function ClassAppbar(props) {
             <Grid container justifyContent="flex-end" alignItems="center">
                 
                 {props.search?<SearchAutocomplete displaysize="small" input={props.input}/>:null}
-                {!isLoggedIn?<>
+                {isLoggedIn?<>
                     <Typography variant="h6" size="large" sx={{fontWeight:200, marginLeft: 2}} > Logged in as Student </Typography>
-                    <Button variant="contained" color="primary" sx={{ ml: 2 }}>Sign Out</Button></>
+                    <Button variant="contained" color="primary" onClick={() => logOut()} sx={{ ml: 2 }}>Sign Out</Button></>
                 :<>
                     <Button variant="text" size="large" component={Link} to='/signUp'>Sign Up</Button>
                     <Button variant="contained" size="large" component={Link} to='logIn'>Log In</Button>

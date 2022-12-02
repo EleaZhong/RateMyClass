@@ -61,9 +61,13 @@ function LogIn(props) {
         try {
             const res = await logIn(userData)
             // if accessToken returned, save to local storage and go to home
-            if (res.data.token) {
+            /*if (res.data.token) {
                 localStorage.setItem('authToken', res.data.token)
                 navigate('/')
+            }*/
+            if (res) {
+                console.log(res.body)
+                //localStorage.setItem('id', res.data.id)
             }
         } catch (error) {
             console.log(error)
