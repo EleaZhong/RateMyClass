@@ -44,6 +44,7 @@ export default function ClassAppbar(props) {
     const logOut = () => {
         localStorage.removeItem('userData')
         setIsLoggedIn(false)
+        navigate('/')
     }
 
     return (

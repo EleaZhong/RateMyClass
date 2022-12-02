@@ -94,7 +94,7 @@ export default function DisplayClass(props) {
                     </Grid>:null}
                     
                     <Grid container xs={12}>
-                        <Grid item container spacing={2} flexGrow={2} xs={12} marginBottom={4}>
+                        {localStorage.getItem('userData')?<Grid item container spacing={2} flexGrow={2} xs={12} marginBottom={4}>
                             <Grid item>
                                 <CardActionArea LinkComponent={Link} to={"/rateClass/"+id} sx={{borderRadius:"5px"}}>
                                     {/* TODO: pass in classID from the Search Page */}
@@ -108,7 +108,7 @@ export default function DisplayClass(props) {
                                     Add a review
                                 </Typography>
                             </Grid>
-                        </Grid>
+                        </Grid>:null}
                     </Grid>
                 </Grid>
             </Box>
