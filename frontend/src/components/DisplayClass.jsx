@@ -81,7 +81,7 @@ export default function DisplayClass(props) {
                     <Grid container xs={12}>
                         <Grid item container spacing={2} flexGrow={2} xs={12} marginBottom={4}>
                             <Grid item>
-                                <CardActionArea onClick={() => navigate('/rateClass', {state:{classID:1}})}>
+                                <CardActionArea onClick={() => navigate('/rateClass', {state:{classID:classData.classID}})}>
                                     {/* TODO: pass in classID from the Search Page */}
                                     <Paper  sx={{width:"64px", height:"64px", backgroundColor:"grey.400", alignItems:"center", justifyContent:"center",display:"flex"}} >
                                         <AddIcon sx={{width:"64px", height:"64px", color:"white"}}/>

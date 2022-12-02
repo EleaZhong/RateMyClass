@@ -1,4 +1,5 @@
 var path = require('path')
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
     entry: './src/index.js',
@@ -8,6 +9,13 @@ module.exports = {
         path: __dirname,
         filename: '../firebase-admin/src/main/resources/static/built/bundle.js'
     },
+    plugins: [
+        new CopyPlugin({ 
+            patterns: [ 
+             { from: './public/favicon.ico' },
+            ]
+        })
+    ],
     resolve: {
         alias: {
           components: path.resolve(__dirname, 'src'),
