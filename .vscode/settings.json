@@ -1,7 +1,0 @@
-{
-    "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "backend/lib/gson-2.8.6.jar"
-    ],
-    "java.configuration.updateBuildConfiguration": "interactive"
-}
