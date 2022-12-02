@@ -5,7 +5,7 @@ import './WelcomePage.css';
 import Button from '@mui/material/Button';
 import { Container} from '@mui/system';
 import Grid2 from '@mui/material/Unstable_Grid2/Grid2';
-import { AppBar,Typography, Toolbar,Grid,CssBaseline, Card, InputLabel, FormControl, Select, MenuItem, Slider,FormHelperText,Box  } from '@mui/material';
+import { AppBar,Typography, Toolbar,Grid,CssBaseline, Card, InputLabel, FormControl, Select, MenuItem, Slider,FormHelperText,Box, nativeSelectClasses  } from '@mui/material';
 import FeatureCard from './FeatureCard';
 import TextField from '@mui/material/TextField';
 import { red } from '@mui/material/colors';
@@ -128,9 +128,12 @@ export default function RateClass(props){
                                                     //document.querySelector("#month-helper").innerHTML = "Please fill this out";
                                                 }
                                                 else{
-                                                    alert("Successfully submitted");
+                                                    
+                                                    //alert("Successfully submitted");
+                                                    
                                                     // TODO: actually submit the form
-                                                    insert(classRating.professor, classRating.comment, classRating.rating, location.state.classID);
+                                                    insert(classRating.professor, classRating.comment, classRating.rating, classRating.semester, classID);
+                                                    navigate('/class/'+classID);
                                                 }
                                                 
                                                 

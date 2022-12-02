@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {useParams, useLocation, useNavigate} from 'react-router-dom'
+import {useParams, useLocation, useNavigate, Navigate} from 'react-router-dom'
 import {
     Box,
     Typography,
@@ -37,6 +37,7 @@ export default function ListClass(props) {
     const [classData, setClassData] = useState(null);
     let query = useQuery();
     let search = query.get("search");
+    const navigate = useNavigate();
 
 
     console.log(search);
@@ -71,7 +72,7 @@ export default function ListClass(props) {
                     <Grid container xs={12}>
                         {localStorage.getItem('userEmail')?<Grid item container spacing={2} flexGrow={2} xs={12} marginBottom={4}>
                             <Grid item>
-                                <CardActionArea onClick={() => alert("redirect")}>
+                                <CardActionArea onClick={() => navigate("/newClass/", {state:{classID:""}})}>
                                     <Paper  sx={{width:"64px", height:"64px", backgroundColor:"grey.400", alignItems:"center", justifyContent:"center",display:"flex"}} >
                                         <AddIcon sx={{width:"64px", height:"64px", color:"white"}}/>
                                     </Paper>
