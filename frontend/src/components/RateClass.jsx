@@ -13,8 +13,6 @@ import ClassAppbar from './ClassAppbar';
 import { insert } from '../services/commentService';
 import {useLocation} from "react-router-dom";
 
-
-
 export default function RateClass(props){
     
         const marks = [

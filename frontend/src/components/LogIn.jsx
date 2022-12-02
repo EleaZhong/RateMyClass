@@ -65,8 +65,10 @@ function LogIn(props) {
                 localStorage.setItem('authToken', res.data.token)
                 navigate('/')
             }*/
-            if (res) {
-                localStorage.setItem('userID', res.data.id)
+            if (res.data) {
+                localStorage.setItem('userData', res.data)
+                // upon successful login, navigate to home
+                navigate('/')
             }
         } catch (error) {
             console.log(error)
