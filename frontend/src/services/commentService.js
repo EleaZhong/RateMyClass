@@ -31,7 +31,10 @@ const get = async (classID) => {
 
 // inserts new comment
 const insert = async (professor, text, rating,semester, classID) => {
+    if (!localStorage.getItem('userData'))
+        return
     try {
+        
         const res = await API.get(
             '/api/comment/insert', 
             {
@@ -53,6 +56,8 @@ const insert = async (professor, text, rating,semester, classID) => {
 
 // upvotes comment
 const upvote = async (commentID) => {
+    if (!localStorage.getItem('userData'))
+        return
     try {
         const res = await API.post(
             '/api/comment/upvote', {

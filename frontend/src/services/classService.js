@@ -62,6 +62,8 @@ const getOne = async (classID) => {
 
 // inserts new class to db
 const insert = async (classID, name) => {
+    if (!localStorage.getItem('userData'))
+        return
     try {
         const res = await API.get(
             '/api/class/insert', {
