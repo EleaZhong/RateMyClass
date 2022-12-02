@@ -12,8 +12,11 @@ import {
 
 import { signUp } from '../services/authService'
 import ClassAppbar from './ClassAppbar'
+import {useParams, useNavigate} from 'react-router-dom'
 
 function SignUp(props) {
+
+    const navigate = useNavigate();
 
     const Container = styled(MuiContainer)(({theme}) => ({
         display: 'flex',
@@ -66,6 +69,8 @@ function SignUp(props) {
             console.log(error)
             alert(error.data.msg)
         })
+
+        navigate("/logIn")
     }
 
     return (

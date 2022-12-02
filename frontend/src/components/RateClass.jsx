@@ -123,7 +123,7 @@ export default function RateClass(props){
                                                 // console.log(this.state.date);
                                                 // console.log(this.state.professor);
                                                 
-                                                if((classRating.professor).length==0||classRating.comment.length==00||classRating.length==0){
+                                                if((classRating.professor).length==0||classRating.comment.length==0||classRating.length==0){
                                                     alert("missing required fileds");
                                                     //document.querySelector("#month-helper").innerHTML = "Please fill this out";
                                                 }
