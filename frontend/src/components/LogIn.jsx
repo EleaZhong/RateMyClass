@@ -66,7 +66,8 @@ function LogIn(props) {
                 navigate('/')
             }*/
             if (res.data) {
-                localStorage.setItem('userData', res.data)
+                localStorage.setItem('userEmail', res.data.email)
+                localStorage.setItem('userID', res.data.useID)
                 // upon successful login, navigate to home
                 navigate('/')
             }

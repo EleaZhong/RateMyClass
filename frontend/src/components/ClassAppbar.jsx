@@ -33,16 +33,17 @@ export default function ClassAppbar(props) {
             setIsLoggedIn(true)
         }*/
 
-        const userData = localStorage.getItem('userData')
-        if (userData) {
+        const userEmail = localStorage.getItem('userEmail')
+        if (userEmail) {
             setIsLoggedIn(true)
-            setUserEmail(userData.email)
+            setUserEmail(userEmail)
         }
             
       }, []);
 
     const logOut = () => {
-        localStorage.removeItem('userData')
+        localStorage.removeItem('userEmail')
+        localStorage.removeItem('userID')
         setIsLoggedIn(false)
         navigate('/')
     }
@@ -59,7 +60,7 @@ export default function ClassAppbar(props) {
                 
                 {props.search?<SearchAutocomplete displaysize="small" input={props.input}/>:null}
                 {isLoggedIn?<>
-                    <Typography variant="h6" size="large" sx={{fontWeight:200, marginLeft: 2}} > Logged in as {userEmail} </Typography>
+                    <Typography variant="h6" size="large" sx={{fontWeight:200, marginLeft: 2}} > Logged in as </Typography> <Typography sx={{color: 'primary.main', ml: 1, fontSize: 21}}>{userEmail}</Typography>
                     <Button variant="contained" color="primary" onClick={() => logOut()} sx={{ ml: 2 }}>Sign Out</Button></>
                 :<>
                     <Button variant="text" size="large" component={Link} to='/signUp'>Sign Up</Button>
