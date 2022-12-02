@@ -69,7 +69,7 @@ export default function SearchAutocomplete(props) {
             const { inputValue } = params;
             // Suggest the creation of a new value
             const isExisting = options.some((option) => inputValue === option.name);
-            if (inputValue !== '' && !isExisting) {
+            if ((inputValue !== '' && !isExisting) && localStorage.getItem('userEmail')) {
                 filtered.push({
                     inputValue,
                     name: `Add "${inputValue}"`,

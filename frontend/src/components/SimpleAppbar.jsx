@@ -27,7 +27,7 @@ const LogoHolder = styled('div')(({theme}) => ({
 
 const Toolbar = styled(MuiToolbar)(({theme}) => ({
     backgroundColor: theme.palette.primary.main,
-    height: '6%'
+    height: '5%'
 }))
 
 function SimpleTopBar() {

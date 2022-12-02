@@ -69,7 +69,7 @@ export default function ListClass(props) {
 
                     
                     <Grid container xs={12}>
-                        <Grid item container spacing={2} flexGrow={2} xs={12} marginBottom={4}>
+                        {localStorage.getItem('userEmail')?<Grid item container spacing={2} flexGrow={2} xs={12} marginBottom={4}>
                             <Grid item>
                                 <CardActionArea onClick={() => alert("redirect")}>
                                     <Paper  sx={{width:"64px", height:"64px", backgroundColor:"grey.400", alignItems:"center", justifyContent:"center",display:"flex"}} >
@@ -85,7 +85,7 @@ export default function ListClass(props) {
                                     Add a Class
                                 </Typography>
                             </Grid>
-                        </Grid>
+                        </Grid>:null}
                     </Grid>
                 </Grid>
             </Box>

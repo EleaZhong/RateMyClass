@@ -11,7 +11,7 @@ import {
 } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 
-import SimpleAppbar from './SimpleAppbar'
+import ClassAppbar from './ClassAppbar'
 import { logIn } from '../services/authService'
 
 function LogIn(props) {
@@ -61,8 +61,14 @@ function LogIn(props) {
         try {
             const res = await logIn(userData)
             // if accessToken returned, save to local storage and go to home
-            if (res.data.token) {
+            /*if (res.data.token) {
                 localStorage.setItem('authToken', res.data.token)
+                navigate('/')
+            }*/
+            if (res.data) {
+                localStorage.setItem('userEmail', res.data.email)
+                localStorage.setItem('userID', res.data.useID)
+                // upon successful login, navigate to home
                 navigate('/')
             }
         } catch (error) {
@@ -73,7 +79,7 @@ function LogIn(props) {
 
     return (
         <div>
-            <SimpleAppbar />
+            <ClassAppbar search={true} color={true}/>
             <Container>
                 <div style={{width: '35%'}}>
                     <Title variant='h3'>

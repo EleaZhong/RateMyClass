@@ -69,9 +69,9 @@ export default function CommentBlock(props) {
                                 </Typography>
                             </Grid>
                             <Grid item marginLeft={"auto"}>
-                                <Typography variant="h6" sx={{fontWeight:200}}>
+                                {/*<Typography variant="h6" sx={{fontWeight:200}}>
                                     Submitted by Anon
-                                </Typography>
+                                </Typography>*/}
                             </Grid>
                         </Grid>
                     </Grid>
@@ -92,10 +92,10 @@ export default function CommentBlock(props) {
                         </Card>
                     </Grid>
                 </Grid>
-                <Grid item container alignItems={"center"} direction={"column"}  xs={1}>
+                {/*<Grid item container alignItems={"center"} direction={"column"}  xs={1}>
                     <ArrowUpwardIcon sx={{width:"40px", height:"40px"}} color={props.rating>0?"primary":"disabled"}/>
                     <ArrowDownwardIcon sx={{width:"40px", height:"40px"}} color={props.rating<=0?"error":"disabled"}/>
-                </Grid>
+                </Grid>*/}
             </Grid>
         //     <Grid item container xs={12}>
         //         <Grid item>

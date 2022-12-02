@@ -5,16 +5,14 @@ import './WelcomePage.css';
 import Button from '@mui/material/Button';
 import { Container} from '@mui/system';
 import Grid2 from '@mui/material/Unstable_Grid2/Grid2';
-import { AppBar,Typography, Toolbar,Grid,CssBaseline, Card, InputLabel, FormControl, Select, MenuItem, Slider,FormHelperText  } from '@mui/material';
+import { AppBar,Typography, Toolbar,Grid,CssBaseline, Card, InputLabel, FormControl, Select, MenuItem, Slider,FormHelperText,Box  } from '@mui/material';
 import FeatureCard from './FeatureCard';
 import TextField from '@mui/material/TextField';
 import { red } from '@mui/material/colors';
-import { render } from '@testing-library/react';
 import ClassAppbar from './ClassAppbar';
 import { insert } from '../services/commentService';
 import {useLocation} from "react-router-dom";
-
-
+import {useParams, useNavigate} from 'react-router-dom'
 
 export default function RateClass(props){
     
@@ -33,10 +31,17 @@ export default function RateClass(props){
             },
         ]
 
-        const location = useLocation();
+        // const { location } = useLocation();
+        // const { classID } = location
+        let {classID } = useParams();
+        console.log(classID);
+        
 
-        const [classRating, setClassRating] = useState({rating:0, professor:"", comment:""});
-        alert(location.state.classID);
+        const [classRating, setClassRating] = useState({rating:0, professor:"", comment:"", semester:""});
+
+        console.log(location.state)
+
+        const navigate = useNavigate();
         
         
         
@@ -49,8 +54,8 @@ export default function RateClass(props){
     
         return(
             <React.StrictMode>
-                <ClassAppbar/>
-                <main>
+                <ClassAppbar search={true} color={true}/>
+                <Box sx={{ display: 'flex', marginTop:9, marginLeft: 12, marginRight: 12}}>
                     <Container justify='center' maxWidth="lg" className="main">
                         <Typography variant='h2'>Add a rating for the class</Typography>
                         <form>
@@ -89,6 +94,12 @@ export default function RateClass(props){
                                 <Grid item xs={12} md={6}>
                                     <InputLabel id="professor-label">Which Professor did you take it with: </InputLabel>
                                     <TextField labelId = "professor-label" name="professor" value={classRating.professor} onChange={handleChange}/>
+                                </Grid>
+
+
+                                <Grid item xs={12} md={6}>
+                                    <InputLabel id="semester-label">Which semester did you take it: </InputLabel>
+                                    <TextField labelId = "semester-label" name="semester" value={classRating.semester} onChange={handleChange}/>
                                 </Grid>
 
                                 <Grid container item xs={12} md={12}>
@@ -132,7 +143,7 @@ export default function RateClass(props){
                         </form>
                             
                     </Container>
-                </main>
+                </Box>
                 
             </React.StrictMode>
             

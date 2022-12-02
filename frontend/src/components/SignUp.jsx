@@ -11,7 +11,7 @@ import {
 } from '@mui/material'
 
 import { signUp } from '../services/authService'
-import SimpleTopBar from './SimpleAppbar'
+import ClassAppbar from './ClassAppbar'
 
 function SignUp(props) {
 
@@ -61,16 +61,16 @@ function SignUp(props) {
         }
 
         // attempt user sign up
-        try {
-            await signUp(userData)
-        } catch (error) {
+
+        signUp(userData).catch((error) => {
             console.log(error)
-        }
+            alert(error.data.msg)
+        })
     }
 
     return (
         <div>
-            <SimpleTopBar />
+            <ClassAppbar search={true} />
             <Container>
                 <div style={{width: '35%'}}>
                     {/* Title */}

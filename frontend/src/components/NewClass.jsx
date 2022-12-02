@@ -42,8 +42,14 @@ const NewClass = (props) => {
 
         // attempt user sign up
         try {
-            const res = await insertClass(classIDRef.current, classNameRef.current)
-            console.log()
+            insertClass(classIDRef.current.value.trim(), classNameRef.current.value.trim()).then(
+                (res) => {
+                    console.log(res)
+                    navigate("/class/"+res.data.id);
+                }
+            )
+
+            
             /*if (res) {
                 // if insertion successful, navigate to new class page
                 navigate('class/' + classIDRef.current)
@@ -55,7 +61,7 @@ const NewClass = (props) => {
 
     return (
         <div style={{display: 'flex', width: '100%', height: '100%'}}>
-            <ClassAppbar />
+            <ClassAppbar search={true}/>
 
             <Container maxWidth='md'>
                 <form style={{width: '60%'}} onSubmit={handleSubmit}>

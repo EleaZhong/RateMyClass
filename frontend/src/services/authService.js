@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API = axios.create({baseURL: 'http://localhost'}) // needs url still
+const API = axios.create({baseURL: 'http://localhost:9090'}) // needs url still
 
 // axios interceptor
 // adds authToken as header to request for user authentication
@@ -14,10 +14,13 @@ const API = axios.create({baseURL: 'http://localhost'}) // needs url still
 // handle user log in
 const logIn = async ({email, password}) => {
     try {
-        const res = await API.post(
-            '/api/auth/logIn', {
-                email: email,
-                password: password,
+        const res = await API.get(
+            '/api/auth/logIn',
+            {
+                params: {
+                    email: email,
+                    password: password,
+                }
             }
         )
         return res
@@ -30,10 +33,13 @@ const logIn = async ({email, password}) => {
 // handle user register
 const signUp = async ({email, password}) => {
     try {
-        const res = await API.post(
-            '/api/auth/signUp', {
-                email: email,
-                password: password,
+        const res = await API.get(
+            '/api/auth/signUp',
+            {
+                params: {
+                    email: email,
+                    password: password,
+                }
             }
         )
         return res
