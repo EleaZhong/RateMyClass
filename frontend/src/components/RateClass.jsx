@@ -132,6 +132,7 @@ export default function RateClass(props){
                                                 // TODO: actually submit the form
                                                 insert(classRating.professor, classRating.comment, classRating.rating, classRating.semester, classID);
                                                 navigate("/class/"+classID)
+                                                navigate(0);
                                                 
                                                 
                                             }

@@ -8,7 +8,6 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Scanner;
 
 import com.google.gson.Gson;
@@ -60,7 +59,10 @@ public class CourseService {
     }
 
     public ResponseEntity<String> insertComment(String professor, String semester, String text, double rating, String classId) {
-        Rating r = new Rating(rating, professor, semester, text, classId);
+        if(professor.isBlank() || semester.isBlank() || text.isBlank()) {
+			return new ResponseEntity<>("", HttpStatus.BAD_REQUEST);
+		}
+		Rating r = new Rating(rating, professor, semester, text, classId);
         Gson gson = new Gson();
         CourseMap courses = gson.fromJson("{map:" + getAllCourses() + "}", CourseMap.class);
         Course c = courses.map.get(classId);
@@ -133,7 +135,10 @@ public class CourseService {
 		return "";
     }
 
-    public ResponseEntity<String> insertCourse(String name, String classID) {   
+    public ResponseEntity<String> insertCourse(String name, String classID) {
+		if(name.isBlank() || classID.isBlank()) {
+			return new ResponseEntity<>("", HttpStatus.BAD_REQUEST);
+		}   
         if(courseExists(classID)) {
             return new ResponseEntity<>("", HttpStatus.BAD_REQUEST);
         }

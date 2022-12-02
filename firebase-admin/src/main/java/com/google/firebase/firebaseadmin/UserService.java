@@ -16,6 +16,9 @@ import com.google.gson.Gson;
 public class UserService {
 	
 	public ResponseEntity<String> logIn(String email, String password) {
+		if(email.isBlank() || password.isBlank()) {
+			return new ResponseEntity<>("", HttpStatus.BAD_REQUEST);
+		}
 		User u = new User(email, password);
 		Gson gson = new Gson();
         UserMap users = gson.fromJson("{map:" + getAllUsers() + "}", UserMap.class);
@@ -30,12 +33,15 @@ public class UserService {
 	}
 
 	public ResponseEntity<String> signUp(String email, String password) {
+		if(email.isBlank() || password.isBlank()) {
+			return new ResponseEntity<>("", HttpStatus.BAD_REQUEST);
+		}
 		User u = new User(email, password);
 		Gson gson = new Gson();
         UserMap users = gson.fromJson("{map:" + getAllUsers() + "}", UserMap.class);
         for (User v : users.map.values()) {
             if (u.getEmail().equals(v.getEmail())) {
-                return new ResponseEntity<>("", HttpStatus.BAD_REQUEST);
+				return new ResponseEntity<>("", HttpStatus.BAD_REQUEST);
             }
         }
 		postUser(u);

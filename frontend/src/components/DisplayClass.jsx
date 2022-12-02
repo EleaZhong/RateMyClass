@@ -89,7 +89,7 @@ export default function DisplayClass(props) {
                     {classData?<Grid container xs={12}>
                         
                         {comments?.map((comment) => {
-                            return <CommentBlock rating={comment.rating} semester={comment.semester} professor={comment.professor} date={comment.date} comment={comment.comment}/>
+                            return <CommentBlock rating={comment.rating} semester={comment.semester} professor={comment.professor} date={comment.date} comment={comment.text}/>
                         })}
                     </Grid>:null}
                     
