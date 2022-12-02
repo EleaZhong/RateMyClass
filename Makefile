@@ -5,6 +5,7 @@ build: build-front clean-back build-msg build-inner
 build-inner:
 	@mvn clean package -f firebase-admin
 	@echo \\033[35m* \\033[32mDone \\033[35m'*'
+	@echo \\033[32mJar can be found in \\033[35m'`'\\033[36m/backend/target/\\033[35m'`'
 	@echo
 	@echo \\033[32mUse \\033[35m'`'\\033[36mmake run\\033[35m'`' \\033[32mto run ClassMate
 	@echo
