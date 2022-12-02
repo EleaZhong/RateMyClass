@@ -1,0 +1,39 @@
+{
+  "name": "classmate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "build": "npm run build-front -s && npm run clean-back -s && npm run build-msg && mvn clean package -f firebase-admin && npm run done-msg -s",
+    "build-msg": "npm run div-msg -s && echo \"\\033[35m* ~~~~~~~~~~~ \\033[32mPackaging into Jar... \\033[35m~~~~~~~~~~~ *\" && npm run div-msg -s",
+    "build-front": "npm run build-front-msg -s && npm run build --prefix frontend && npm run done-msg -s",
+    "build-front-msg": "npm run div-msg -s && echo \"\\033[35m* ~~~~~~~~~~~~ \\033[32mBuilding Frontend... \\033[35m~~~~~~~~~~~~ *\" && npm run div-msg -s",
+    "classmate": "npm run start -s",
+    "clean-back": "npm run clean-back-msg -s && mvn clean -f firebase-admin && npm run done-msg -s",
+    "clean-back-msg": "npm run div-msg -s && echo \"\\033[35m* ~~~~~~~~~~~~ \\033[32mCleaning Backend... \\033[35m~~~~~~~~~~~~ *\" && npm run div-msg -s",
+    "deps": "npm run deps-msg -s && npm i --prefix frontend -s && npm run done-msg -s",
+    "deps-msg": "npm run div-msg -s -s && echo \"\\033[35m* ~~~~~~~~~ \\033[32mInstalling Dependencies...\\033[35m ~~~~~~~~~ *\" && npm run div-msg -s",
+    "div-msg": "echo \"\\033[35m**************************************************\"",
+    "done-msg": "echo \"\\033[35m* \\033[32mDone \\033[35m*\"",
+    "line-brk-msg": "echo \"\"",
+    "menu": "npm run title-msg -s && npm run line-brk-msg -s && echo \"\\033[35mFollow these steps to get ClassMate up and running:\" && npm run line-brk-msg -s && echo \"\\033[35m'\\033[36mnpm run deps\\033[35m' - \\033[32mInstalls dependencies\" && echo \"\\033[35m'\\033[36mnpm run build\\033[35m' - \\033[32mBuilds and packages ClassMate into jar\" && echo \"\\033[35m'\\033[36mnpm run classmate\\033[35m' - \\033[32mRuns ClassMate\" && npm run line-brk-msg -s",
+    "small-div-msg": "echo \"\\033[35m********************\"",
+    "start": "npm run start-msg -s && java -jar firebase-admin/target/firebase-admin-0.0.1-SNAPSHOT.jar",
+    "start-msg": "npm run div-msg -s -s && echo \"\\033[35m* ~~~~~~~~~~~ \\033[32mStarting \\033[33mClassMate\\033[32m...\\033[35m ~~~~~~~~~~~ *\" && npm run div-msg -s",
+    "terminated-msg": "echo \"\\033[35m* \\033[32mProcess terminated. \\033[35m*\"",
+    "title-msg": "npm run small-div-msg -s && echo \"\\033[35m* ~~ \\033[33mClassMate. \\033[35m~~ *\" && npm run small-div-msg -s"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EleaZhong/RateMyClass.git"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/EleaZhong/RateMyClass/issues"
+  },
+  "homepage": "https://github.com/EleaZhong/RateMyClass#readme",
+  "dependencies": {
+    "concurrently": "^7.6.0"
+  }
+}

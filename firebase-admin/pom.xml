@@ -44,12 +44,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
-		<dependency>
-            <groupId>org.springframework.boot</groupId> 
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>
-
 	</dependencies>
 
 	<build>
@@ -58,6 +52,12 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+			<plugin>
+				<groupId>com.github.eirslett</groupId>
+				<artifactId>frontend-maven-plugin</artifactId>
+			</plugin>
+
 		</plugins>
 	</build>
 
