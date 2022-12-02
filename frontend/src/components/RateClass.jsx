@@ -5,14 +5,14 @@ import './WelcomePage.css';
 import Button from '@mui/material/Button';
 import { Container} from '@mui/system';
 import Grid2 from '@mui/material/Unstable_Grid2/Grid2';
-import { AppBar,Typography, Toolbar,Grid,CssBaseline, Card, InputLabel, FormControl, Select, MenuItem, Slider,FormHelperText  } from '@mui/material';
+import { AppBar,Typography, Toolbar,Grid,CssBaseline, Card, InputLabel, FormControl, Select, MenuItem, Slider,FormHelperText,Box  } from '@mui/material';
 import FeatureCard from './FeatureCard';
 import TextField from '@mui/material/TextField';
 import { red } from '@mui/material/colors';
 import ClassAppbar from './ClassAppbar';
 import { insert } from '../services/commentService';
 import {useLocation} from "react-router-dom";
-import {useParams} from 'react-router-dom'
+import {useParams, useNavigate} from 'react-router-dom'
 
 export default function RateClass(props){
     
@@ -40,6 +40,8 @@ export default function RateClass(props){
         const [classRating, setClassRating] = useState({rating:0, professor:"", comment:"", semester:""});
 
         console.log(location.state)
+
+        const navigate = useNavigate();
         
         
         
@@ -52,8 +54,8 @@ export default function RateClass(props){
     
         return(
             <React.StrictMode>
-                <ClassAppbar/>
-                <main>
+                <ClassAppbar search={true} color={true}/>
+                <Box sx={{ display: 'flex', marginTop:9, marginLeft: 12, marginRight: 12}}>
                     <Container justify='center' maxWidth="lg" className="main">
                         <Typography variant='h2'>Add a rating for the class</Typography>
                         <form>
@@ -126,9 +128,11 @@ export default function RateClass(props){
                                                 //     document.querySelector("#month-helper").innerHTML = "Please fill this out";
                                                 // }
                                                 
-                                                alert("Successfully submitted");
+                                                // alert("Successfully submitted");
                                                 // TODO: actually submit the form
                                                 insert(classRating.professor, classRating.comment, classRating.rating, classRating.semester, classID);
+                                                navigate("/class/"+classID)
+                                                
                                                 
                                             }
                                         }>Submit
@@ -138,7 +142,7 @@ export default function RateClass(props){
                         </form>
                             
                     </Container>
-                </main>
+                </Box>
                 
             </React.StrictMode>
             

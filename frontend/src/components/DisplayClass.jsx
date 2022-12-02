@@ -14,7 +14,6 @@ import {
     Paper,
     Divider,
     CardActionArea,
-    Link
 } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search';
 import {getAll, getOne} from "../services/classService";
@@ -23,7 +22,7 @@ import { createFilterOptions } from '@mui/material/Autocomplete';
 import ClassAppbar from "./ClassAppbar"
 import CommentBlock from "./CommentBlock"
 import AddIcon from '@mui/icons-material/Add';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 const filter = createFilterOptions();
 
 
@@ -68,7 +67,8 @@ export default function DisplayClass(props) {
                         <Grid item >
                             <Paper  sx={{width:"128px", height:"128px", backgroundColor:"primary.main", alignItems:"center", justifyContent:"center",display:"flex"}} >
                                 <Typography variant="h2" sx={{color:"white", fontWeight:200}}>
-                                {classData?.ratings} 
+                                {/* {classData?.ratings}  */}
+                                {classData?.ratings.toFixed(1)}
                                 </Typography>
                             </Paper>
                         </Grid>

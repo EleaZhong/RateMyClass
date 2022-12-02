@@ -49,7 +49,7 @@ export default function ClassBlock(props) {
                     
                         <Paper  sx={{width:"80px", height:"80px", backgroundColor:"primary.main", alignItems:"center", justifyContent:"center",display:"flex"}} >
                             <Typography variant="h4" sx={{color:"white", fontWeight:200}}>
-                                {props.rating}
+                                {props.rating.toFixed(1)}
                             </Typography>
                         </Paper>
                 </Grid>
