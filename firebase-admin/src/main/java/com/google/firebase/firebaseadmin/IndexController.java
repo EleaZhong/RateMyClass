@@ -15,8 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class IndexController {
-    @RequestMapping(value="/")
-    public String index() {
-        return "index.html";
+    @RequestMapping(value = { "/", "/{x:[\\w\\-]+}", "/{x:^(?!api$).*$}/*/{y:[\\w\\-]+}","/error" })
+    public String react() {
+        return "index";
     }
 }
