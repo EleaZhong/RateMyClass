@@ -13,7 +13,8 @@ import {
     InputAdornment,
     Paper,
     Divider,
-    CardActionArea
+    CardActionArea,
+    Link
 } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search';
 import {getAll, getOne} from "../services/classService";
@@ -95,7 +96,7 @@ export default function DisplayClass(props) {
                     <Grid container xs={12}>
                         <Grid item container spacing={2} flexGrow={2} xs={12} marginBottom={4}>
                             <Grid item>
-                                <CardActionArea onClick={() => navigate('/rateClass', {state:{classID:id}})}>
+                                <CardActionArea LinkComponent={Link} to={"/rateClass/"+id} sx={{borderRadius:"5px"}}>
                                     {/* TODO: pass in classID from the Search Page */}
                                     <Paper  sx={{width:"64px", height:"64px", backgroundColor:"grey.400", alignItems:"center", justifyContent:"center",display:"flex"}} >
                                         <AddIcon sx={{width:"64px", height:"64px", color:"white"}}/>

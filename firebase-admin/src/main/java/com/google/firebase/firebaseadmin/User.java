@@ -2,12 +2,21 @@ package com.google.firebase.firebaseadmin;
 
 public class User {
     
+    private String id;
     private String email;
     private String password;
 
     public User(String email, String password) {
         this.email = email;
         this.password = password;
+    }
+
+    public String getID() {
+        return id;
+    }
+
+    public void setID(String id) {
+        this.id = id;
     }
 
     public String getEmail() {

@@ -37,7 +37,7 @@ export default function App() {
                         <Route path='/newClass' element={<NewClass />} />
                         <Route path='/logIn' element={<LogIn />} />
                         <Route path='/signUp' element={<SignUp />} />
-                        <Route path='/rateClass' element={<RateClass />} />
+                        <Route path='/rateClass/:classID' element={<RateClass />} />
 
                     </Routes>
                 </BrowserRouter>

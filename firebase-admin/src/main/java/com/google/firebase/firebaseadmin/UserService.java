@@ -22,7 +22,8 @@ public class UserService {
         for(String key : users.map.keySet()) {
 			User v = users.map.get(key);
             if (v.equals(u)) {
-                return new ResponseEntity<>("{\"id\": \"" + key + "\"}", HttpStatus.OK);
+				u.setID(key);
+                return new ResponseEntity<>(gson.toJson(u), HttpStatus.OK);
             }
         }
 		return new ResponseEntity<>("", HttpStatus.BAD_REQUEST);

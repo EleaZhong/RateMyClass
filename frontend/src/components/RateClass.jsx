@@ -12,6 +12,7 @@ import { red } from '@mui/material/colors';
 import ClassAppbar from './ClassAppbar';
 import { insert } from '../services/commentService';
 import {useLocation} from "react-router-dom";
+import {useParams} from 'react-router-dom'
 
 
 
@@ -34,8 +35,11 @@ export default function RateClass(props){
 
         // const { location } = useLocation();
         // const { classID } = location
+        let {classID } = useParams();
+        console.log(classID);
+        
 
-        const [classRating, setClassRating] = useState({rating:0, professor:"", comment:""});
+        const [classRating, setClassRating] = useState({rating:0, professor:"", comment:"", semester:""});
 
         console.log(props)
         
@@ -92,6 +96,12 @@ export default function RateClass(props){
                                     <TextField labelId = "professor-label" name="professor" value={classRating.professor} onChange={handleChange}/>
                                 </Grid>
 
+
+                                <Grid item xs={12} md={6}>
+                                    <InputLabel id="semester-label">Which semester did you take it: </InputLabel>
+                                    <TextField labelId = "semester-label" name="semester" value={classRating.semester} onChange={handleChange}/>
+                                </Grid>
+
                                 <Grid container item xs={12} md={12}>
                                     <Grid item xs={12} md={12}>
                                     <InputLabel id="comment-label" >Comment For the class: </InputLabel>
@@ -120,7 +130,7 @@ export default function RateClass(props){
                                                 
                                                 alert("Successfully submitted");
                                                 // TODO: actually submit the form
-                                                insert(classRating.professor, classRating.comment, classRating.rating, location.state.classID);
+                                                insert(classRating.professor, classRating.comment, classRating.rating, classRating.semester, classID);
                                                 
                                             }
                                         }>Submit

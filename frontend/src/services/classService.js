@@ -63,10 +63,12 @@ const getOne = async (classID) => {
 // inserts new class to db
 const insert = async (classID, name) => {
     try {
-        const res = await API.post(
+        const res = await API.get(
             '/api/class/insert', {
-                classID: classID,
-                name: name
+                params: {
+                    classID: classID,
+                    name: name
+                }
             }
         )
         return res
