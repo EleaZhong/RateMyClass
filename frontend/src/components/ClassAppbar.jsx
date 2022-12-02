@@ -59,7 +59,7 @@ export default function ClassAppbar(props) {
                 
                 {props.search?<SearchAutocomplete displaysize="small" input={props.input}/>:null}
                 {isLoggedIn?<>
-                    <Typography variant="h6" size="large" sx={{fontWeight:200, marginLeft: 2}} > Logged in as {userEmail} </Typography>
+                    <Typography variant="h6" size="large" sx={{fontWeight:200, marginLeft: 2}} > Logged in  </Typography> {/* as {userEmail} */}
                     <Button variant="contained" color="primary" onClick={() => logOut()} sx={{ ml: 2 }}>Sign Out</Button></>
                 :<>
                     <Button variant="text" size="large" component={Link} to='/signUp'>Sign Up</Button>
