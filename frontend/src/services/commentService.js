@@ -15,7 +15,7 @@ const API = axios.create({baseURL: 'http://localhost:9090'}) // needs url still
 const get = async (classID) => {
     try {
         const res = await API.get(
-            '/api/comment/',
+            '/api/comment',
             {
                 params: {
                     classID: classID
