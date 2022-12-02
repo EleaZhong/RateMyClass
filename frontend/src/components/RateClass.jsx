@@ -112,10 +112,10 @@ export default function RateClass(props){
                                                 // console.log(this.state.date);
                                                 // console.log(this.state.professor);
                                                 
-                                                // if(classRating.date == null){
-                                                //     alert("missing required fileds");
-                                                //     document.querySelector("#month-helper").innerHTML = "Please fill this out";
-                                                // }
+                                                if(classRating.professor == ""||classRating.comment== ""){
+                                                    alert("missing required fileds");
+                                                    //document.querySelector("#month-helper").innerHTML = "Please fill this out";
+                                                }
                                                 
                                                 alert("Successfully submitted");
                                                 // TODO: actually submit the form
