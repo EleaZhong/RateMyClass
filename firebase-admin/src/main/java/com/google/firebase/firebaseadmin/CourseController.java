@@ -31,7 +31,7 @@ public class CourseController {
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
-    @PostMapping("/api/class/insert")
+    @GetMapping("/api/class/insert")
     public ResponseEntity<String> insert(@RequestParam String name, String classID) throws InterruptedException, ExecutionException{
         return courseService.insertCourse(name, classID);
     }
@@ -43,7 +43,7 @@ public class CourseController {
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
-    @PostMapping("/api/comment/insert")
+    @GetMapping("/api/comment/insert")
     public ResponseEntity<String> insert(@RequestParam String professor, String semester, String text, double rating, String classID) throws InterruptedException, ExecutionException{
         return courseService.insertComment(professor, semester, text, rating, classID);
     }

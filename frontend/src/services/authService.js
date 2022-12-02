@@ -34,9 +34,12 @@ const logIn = async ({email, password}) => {
 const signUp = async ({email, password}) => {
     try {
         const res = await API.get(
-            '/api/auth/signUp', {
-                email: email,
-                password: password,
+            '/api/auth/signUp',
+            {
+                params: {
+                    email: email,
+                    password: password,
+                }
             }
         )
         return res
