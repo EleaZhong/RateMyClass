@@ -86,7 +86,8 @@ export default function DisplayClass(props) {
                     <Divider sx={{width:"100%", marginBottom:6}}/>
                     
                     {classData?<Grid container xs={12}>
-                        {comments.map((comment) => {
+                        
+                        {comments?.map((comment) => {
                             return <CommentBlock rating={comment.rating} semester={comment.semester} professor={comment.professor} date={comment.date} comment={comment.comment}/>
                         })}
                     </Grid>:null}
