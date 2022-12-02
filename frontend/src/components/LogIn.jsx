@@ -11,7 +11,7 @@ import {
 } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 
-import SimpleAppbar from './SimpleAppbar'
+import ClassAppbar from './ClassAppbar'
 import { logIn } from '../services/authService'
 
 function LogIn(props) {
@@ -79,7 +79,7 @@ function LogIn(props) {
 
     return (
         <div>
-            <SimpleAppbar />
+            <ClassAppbar search={true} color={true}/>
             <Container>
                 <div style={{width: '35%'}}>
                     <Title variant='h3'>

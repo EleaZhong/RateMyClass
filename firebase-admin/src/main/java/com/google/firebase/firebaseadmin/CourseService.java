@@ -66,11 +66,10 @@ public class CourseService {
         Course c = courses.map.get(classId);
         c.addRating(r);
         putCourse(classId, c);
-        return new ResponseEntity<>("", HttpStatus.OK); // TODO: Return updated list of ratings?
+        return new ResponseEntity<>("", HttpStatus.OK);
     }
 
     public boolean courseExists(String courseID) {
-
         Gson gson = new Gson();
         CourseMap courses = gson.fromJson("{map:" + getAllCourses() + "}", CourseMap.class);
         if(courses.map != null) {
@@ -82,7 +81,6 @@ public class CourseService {
 			}
 		}
         return false;
-
     }
     
     public ResponseEntity<String> getCourse(String courseID) {
@@ -135,15 +133,22 @@ public class CourseService {
 		return "";
     }
 
-    public ResponseEntity<String> insertCourse(String name, String classID) {
-        
+    public ResponseEntity<String> insertCourse(String name, String classID) {   
         if(courseExists(classID)) {
             return new ResponseEntity<>("", HttpStatus.BAD_REQUEST);
         }
         Course c = new Course(classID, name);
         postCourse(c);
-        return new ResponseEntity<>("", HttpStatus.OK); // TODO: Return inserted class?
-
+		Gson gson = new Gson();
+        CourseMap courses = gson.fromJson("{map:" + getAllCourses() + "}", CourseMap.class);
+        if(courses.map != null) {
+			for(String key : courses.map.keySet()) {
+				if(courses.map.get(key).getCode().equals(classID)) {
+					return new ResponseEntity<>("{\"id\": \"" + key + "\"}", HttpStatus.OK);			
+				}
+			}
+		}
+		return new ResponseEntity<>("", HttpStatus.BAD_REQUEST);
     }
 
     public static void postCourse(Course course) {
