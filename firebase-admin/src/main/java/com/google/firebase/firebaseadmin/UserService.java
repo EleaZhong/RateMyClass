@@ -22,7 +22,7 @@ public class UserService {
         for(String key : users.map.keySet()) {
 			User v = users.map.get(key);
             if (v.equals(u)) {
-                return new ResponseEntity<>(key, HttpStatus.OK);
+                return new ResponseEntity<>(key, HttpStatus.OK); // TODO: FIX BODY?
             }
         }
 		return new ResponseEntity<>("", HttpStatus.BAD_REQUEST);
@@ -38,7 +38,7 @@ public class UserService {
             }
         }
 		postUser(u);
-		return new ResponseEntity<>("", HttpStatus.OK);
+		return new ResponseEntity<>("", HttpStatus.OK); // TODO: FIX BODY?
 	}
 
 	public void postUser(User user) {

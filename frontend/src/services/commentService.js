@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API = axios.create({baseURL: 'http://localhost'}) // needs url still
+const API = axios.create({baseURL: 'http://localhost:9090'}) // needs url still
 
 // axios interceptor
 // adds authToken as header to request for user authentication
@@ -15,7 +15,12 @@ const API = axios.create({baseURL: 'http://localhost'}) // needs url still
 const get = async (classID) => {
     try {
         const res = await API.get(
-            '/api/comment/' + classID
+            '/api/comment/',
+            {
+                params: {
+                    classID: classID
+                }
+            }
         )
         return res
     } catch (error) {
@@ -25,7 +30,7 @@ const get = async (classID) => {
 }
 
 // inserts new comment
-const insert = async (professor, semester, text, rating, classID) => {
+const insert = async (professor, text, rating, classID) => {
     try {
         const res = await API.post(
             '/api/comment/insert', {

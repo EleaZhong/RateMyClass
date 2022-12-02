@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API = axios.create({baseURL: 'http://localhost'}) // needs url still
+const API = axios.create({baseURL: 'http://localhost:9090'}) // needs url still
 
 // axios interceptor
 // adds authToken as header to request for user authentication
