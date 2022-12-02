@@ -66,8 +66,7 @@ function LogIn(props) {
                 navigate('/')
             }*/
             if (res) {
-                console.log(res.body)
-                //localStorage.setItem('id', res.data.id)
+                localStorage.setItem('userID', res.data.id)
             }
         } catch (error) {
             console.log(error)

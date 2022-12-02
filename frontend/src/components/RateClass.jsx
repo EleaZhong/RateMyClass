@@ -32,10 +32,12 @@ export default function RateClass(props){
             },
         ]
 
-        const location = useLocation();
+        // const { location } = useLocation();
+        // const { classID } = location
 
         const [classRating, setClassRating] = useState({rating:0, professor:"", comment:""});
-        alert(location.state.classID);
+
+        console.log(location.state)
         
         
         
